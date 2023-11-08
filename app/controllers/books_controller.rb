@@ -7,6 +7,9 @@ class BooksController < ApplicationController
     @book_comment = BookComment.new
     @tag_list = @book.tags.pluck(:name).join(',')
     @book_tags = @book.tags
+    unless ReadCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.read_counts.create(book_id: @book.id)
+    end
   end
 
   def new

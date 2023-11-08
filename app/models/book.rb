@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
   has_many :book_tags, dependent: :destroy
   has_many :tags, through: :book_tags
+  has_many :read_counts, dependent: :destroy
   
   scope :latest, -> {order(created_at: :desc)}
   scope :star_count, -> {order(star: :desc)}

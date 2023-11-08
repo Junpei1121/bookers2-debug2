@@ -16,7 +16,7 @@
       <tr>
         <td>
           <%= link_to user_path(user) do %>
-            <%= image_tag user.get_profile_image, size:'100x100' %>
+            <%= image_tag user.get_profile_image(100,100) %>
           <% end %>
         </td>
         <td><%= user.name %></td>

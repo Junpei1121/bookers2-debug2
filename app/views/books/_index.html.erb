@@ -11,6 +11,7 @@
   </thead>
   <tbody>
     <% books.each do |book| %>
+    
       <tr>
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image(50,50) %>
@@ -18,11 +19,16 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
+        <% tag_lists.each do |list|%>
+        <td>
+            <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+        </td>
+        <% end %>
         <td id="favorites_<%= book.id %>" >
             <%= render 'favorites/favorites', book: book %>
         </td>
         <td>コメント数：<span id="comment_count"><%= book.book_comments.count %></span></td>
-        <td><%= render "static.rate", book: book %></td>
+        <td><%= render "books/static.rate", book: book %></td>
       </tr>
     <% end %>
   </tbody>

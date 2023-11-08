@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
   end
   get "search" => "searches#search"
+  get "search_tag" => "books#search_tag"
     
   
   

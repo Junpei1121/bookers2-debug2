@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
+    @books = @user.books.page(params[:page]).reverse_order
+    @today_book =  @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
     @book = Book.new
     @tag_lists = Tag.all
     @following_users = @user.following_users

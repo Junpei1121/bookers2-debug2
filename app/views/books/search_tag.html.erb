@@ -1,8 +1,9 @@
 <h2>タグが<%=@tag.name%>の投稿一覧</h2>
 
   <!--タグリスト-->
-  <% @tag_list.each do |list|%>
+  <% @tag_lists.each do |list|%>
    
     <%=link_to list.name,search_tag_path(tag_id: list.id) %>
     <%="(#{list.books.count})" %>
+    
   <% end %>
